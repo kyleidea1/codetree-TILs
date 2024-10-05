@@ -24,13 +24,14 @@ def move(zero_cnt,pos,up,down): #pos:deque
             up[n-1] -= 1
             if up[cur+1] == 0:
                 zero_cnt += 1
-        elif cur+1 < n-1 and cur+1 not in pos and up[cur+1] != 0:
-            new_pos.append(cur+1)
-            up[cur+1] -= 1
-            if up[cur+1] == 0:
-                zero_cnt += 1
-        else:
-            new_pos.append(cur)
+        elif cur+1 < n-1 and up[cur+1] != 0:
+            if cur+1 not in pos:
+                new_pos.append(cur+1)
+                up[cur+1] -= 1
+                if up[cur+1] == 0:
+                    zero_cnt += 1
+            else:
+                new_pos.append(cur)
     return zero_cnt,new_pos,up,down
 
 def put(pos,up,down):

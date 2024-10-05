@@ -16,19 +16,20 @@ def rotate(pos,up,down):
     down.append(up.pop())
     return new_pos,up,down
 
-def move(pos,up,down): #pos:deque
-    global zero_cnt
+def move(zero_cnt,pos,up,down): #pos:deque
     new_pos = deque([])
     while pos:
         cur = pos.pop()
         if cur+1 == n-1: #n에 도달하면 즉시 내림
             up[n-1] -= 1
+            if up[cur+1] == 0:
+                zero_cnt += 1
         elif cur+1 < n-1 and cur+1 not in pos and up[cur+1] != 0:
             new_pos.append(cur+1)
             up[cur+1] -= 1
             if up[cur+1] == 0:
                 zero_cnt += 1
-    return new_pos,up,down
+    return zero_cnt,new_pos,up,down
 
 def put(pos,up,down):
     pos.appendleft(0)
@@ -36,7 +37,7 @@ def put(pos,up,down):
 
 while zero_cnt < k:
     pos,up,down = rotate(pos,up,down)
-    pos,up,down = move(pos,up,down)
+    zero_cnt,pos,up,down = move(zero_cnt,pos,up,down)
     if 0 not in pos and up[0] != 0:
         pos.appendleft(0)
         up[0] -= 1

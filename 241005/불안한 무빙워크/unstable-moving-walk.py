@@ -21,7 +21,7 @@ def move(pos,up,down): #pos:deque
         cur = pos.pop()
         if cur+1 == n-1: #n에 도달하면 즉시 내림
             up[n-1] -= 1
-        elif cur+1 not in pos and up[cur+1] != 0:
+        elif cur+1 < n-1 and cur+1 not in pos and up[cur+1] != 0:
             new_pos.append(cur+1)
             up[cur+1] -= 1
     return new_pos,up,down

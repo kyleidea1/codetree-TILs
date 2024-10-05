@@ -29,6 +29,8 @@ def move(zero_cnt,pos,up,down): #pos:deque
             up[cur+1] -= 1
             if up[cur+1] == 0:
                 zero_cnt += 1
+        else:
+            new_pos.append(cur)
     return zero_cnt,new_pos,up,down
 
 def put(pos,up,down):

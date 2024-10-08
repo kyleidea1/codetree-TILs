@@ -21,7 +21,7 @@ def simulation():
             if ppl[i] == n-1:
                 ppl.pop()
 
-    if 0 not in ppl and safety[0]:
+    if 0 not in ppl and safety[0] > 0:
         ppl.appendleft(0)
         safety[0] -= 1
         if safety[0] == 0:

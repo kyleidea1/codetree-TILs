@@ -11,6 +11,10 @@ def simulation():
     global zero_cnt
     moving_walk.appendleft(moving_walk.pop())
     safety.appendleft(safety.pop())
+    for i in range(len(ppl)):
+        ppl[i] += 1
+        if ppl[i] == n-1:
+            ppl.pop()
 
     for i in range(len(ppl)):
         if ppl[i] < n-1 and ppl[i]+1 not in ppl:
